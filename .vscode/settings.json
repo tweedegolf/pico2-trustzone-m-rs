@@ -1,0 +1,9 @@
+{
+    "rust-analyzer.cargo.target": "thumbv8m.main-none-eabihf",
+    // "rust-analyzer.check.allTargets": false,
+    // Load both Cargo.toml files as independent projects
+    "rust-analyzer.linkedProjects": [
+        "non-secure-app/Cargo.toml",
+        "secure-world-app/Cargo.toml"
+    ],
+}

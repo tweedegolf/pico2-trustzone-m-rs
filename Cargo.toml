@@ -1,0 +1,17 @@
+[workspace]
+members = [
+    "app-s",
+    "app-ns",
+    "xtask",
+]
+default-members = ["xtask"]
+resolver = "3"
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on flash
+lto = true # better optimizations
+
+[profile.dev]
+opt-level = 1
+debug = true

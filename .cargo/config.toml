@@ -1,0 +1,7 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+rustflags = [
+      "-C", "linker=arm-none-eabi-ld",
+]
+
+[alias]
+xtask = "run --package xtask --"
