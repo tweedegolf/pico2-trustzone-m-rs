@@ -79,8 +79,8 @@ fn set_up_sau(sau: &mut SAU) {
     sau.set_region(
         0,
         SauRegion {
-            base_address: 0x10040000,
-            limit_address: 0x103FFFFF, // End of 4MB Flash
+            base_address: 0x10100000,
+            limit_address: 0x103FFFFF,
             attribute: SauRegionAttribute::NonSecure,
         },
     )
