@@ -64,13 +64,9 @@ fn main() -> ! {
     }
 
     // Jump to non-secure world
-    unsafe {
-        let ns_vector = 0x10100000usize; // start of non-secure flash
-        let ns_reset: extern "cmse-nonsecure-call" fn() -> ! =
-            core::mem::transmute(*((ns_vector + 4) as *const u32));
-        cortex_m::register::msp::write_ns(*(ns_vector as *const u32));
-        ns_reset();
-    }
+    let ns_vector = 0x10100000usize as *const u32; // start of non-secure flash
+    let scb_ns = core_peripherals.SCBNS; // non-secure system control block
+    unsafe { cortex_m::asm::bootload_ns(ns_vector, scb_ns) };
 }
 
 /// Program the security attribution unit (SAU) to enable TrustZone-M functionality.
